@@ -1,11 +1,21 @@
-import React, { useState } from "react";
-
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isEmail, setIsEmail] = useState(false);
-
   const [isPassword, setisPassword] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("login");
+    if (token) {
+      navigate("/todo");
+    }
+  }, [navigate]);
+
   const onEmailHandler = (e) => {
     const emailRegex = /@/;
     setEmail(e.target.value);
@@ -15,7 +25,22 @@ function Home() {
       setIsEmail(true);
     }
   };
-  const onSubmit = () => {};
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const Body = { email: email, password: password };
+    try {
+      await axios
+        .post("https://pre-onboarding-selection-task.shop/auth/signin", Body)
+        .then((res) => {
+          localStorage.clear();
+          localStorage.setItem("login", res.data.access_token);
+          navigate("/todo");
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  };
   const onPasswordHandler = (e) => {
     const password = e.target.value;
     setPassword(password);
