@@ -23,3 +23,7 @@ input창에 todo입력후 추가 버튼 클릭시 api post 호출 후 api get으
 ## 배포 주소
 
 https://imaginative-moxie-72c9b9.netlify.app/
+
+## 동영상
+
+https://drive.google.com/file/d/14keP-vrx_QPgb_mpa-QQuff8ZHlTOjTB/view?usp=share_link
