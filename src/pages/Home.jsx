@@ -4,7 +4,7 @@ import Form from "../components/home/Form";
 
 function Home() {
   const [tab, setTab] = useState("회원가입");
-  console.log(1);
+
   const navigate = useNavigate();
 
   useEffect(() => {
