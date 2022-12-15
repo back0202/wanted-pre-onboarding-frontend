@@ -22,4 +22,4 @@ input창에 todo입력후 추가 버튼 클릭시 api post 호출 후 api get으
 
 ## 배포 주소
 
-http://172.20.10.2:3000
+https://imaginative-moxie-72c9b9.netlify.app/
