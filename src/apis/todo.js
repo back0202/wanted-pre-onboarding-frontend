@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const todoCreate = async (token, data) => {
   try {
-    await axios.post(`${process.env.REACT_APP_DB_PORT}todos`, data, {
+    await axios.post(`${process.env.REACT_APP_DB_PORT}/todos`, data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
