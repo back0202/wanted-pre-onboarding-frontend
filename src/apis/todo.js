@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const todoCreate = async (token, data) => {
   try {
@@ -9,7 +9,7 @@ export const todoCreate = async (token, data) => {
     });
     return true;
   } catch (e) {
-    alert("todo생성 실패");
+    alert('todo생성 실패');
     return false;
   }
 };
@@ -23,7 +23,7 @@ export const todoDelate = async (id, token) => {
     });
     return true;
   } catch (e) {
-    alert("todo삭제 실패");
+    alert('todo삭제 실패');
     return false;
   }
 };
@@ -37,22 +37,22 @@ export const todoUpdate = async (token, data, id) => {
     });
     return true;
   } catch (e) {
-    alert("todo업데이트 실패");
+    alert('todo업데이트 실패');
     return false;
   }
 };
 
-export const todoGet = async (token) => {
+export const todoGet = async token => {
   try {
     const res = await axios.get(`${process.env.REACT_APP_DB_PORT}/todos`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    alert("성공");
+    alert('성공');
     return res.data;
   } catch (e) {
-    alert("todo가져오기 실패");
+    alert('todo가져오기 실패');
     return [];
   }
 };

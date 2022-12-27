@@ -1,7 +1,7 @@
-import { useState, memo, useCallback } from "react";
-import styled from "styled-components";
+import { useState, memo, useCallback } from 'react';
+import styled from 'styled-components';
 
-import { todoDelate, todoUpdate } from "../../apis/todo";
+import { todoDelate, todoUpdate } from '../../apis/todo';
 
 const SBtnBox = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const SLayout = styled.div`
   display: flex;
 `;
 const STodoInput = styled.input`
-  text-decoration: ${({ isCompleted }) => (isCompleted ? "line-through" : "")};
+  text-decoration: ${({ isCompleted }) => (isCompleted ? 'line-through' : '')};
 `;
 
 function TodoItem({ data, isCompleted, setIsdataChange, id }) {
@@ -18,7 +18,7 @@ function TodoItem({ data, isCompleted, setIsdataChange, id }) {
   const [isChange, setIschange] = useState(false);
   const [completeBtn, setCompleteBtn] = useState(isCompleted);
 
-  const handleInput = useCallback((e) => {
+  const handleInput = useCallback(e => {
     setTodoValue(e.target.value);
   }, []);
 
@@ -32,30 +32,30 @@ function TodoItem({ data, isCompleted, setIsdataChange, id }) {
   }, [data]);
 
   const handleComplate = useCallback(() => {
-    setCompleteBtn((prev) => !prev);
+    setCompleteBtn(prev => !prev);
   }, []);
 
   const handleDeleate = useCallback(
-    async (e) => {
+    async e => {
       e.preventDefault();
-      const token = localStorage.getItem("login");
+      const token = localStorage.getItem('login');
       const todoDelateResult = await todoDelate(id, token);
       if (todoDelateResult) {
-        setIsdataChange((prev) => !prev);
+        setIsdataChange(prev => !prev);
       }
     },
-    [id, setIsdataChange]
+    [id, setIsdataChange],
   );
 
   const handleUpdate = useCallback(async () => {
     setIschange(false);
 
     if (data !== todoValue || isCompleted !== completeBtn) {
-      let token = localStorage.getItem("login");
+      let token = localStorage.getItem('login');
       const data = { todo: todoValue, isCompleted: completeBtn };
       const todoUpdateResult = todoUpdate(token, data, id);
 
-      if (todoUpdateResult) setIsdataChange((prev) => !prev);
+      if (todoUpdateResult) setIsdataChange(prev => !prev);
     }
   }, [completeBtn, data, id, isCompleted, setIsdataChange, todoValue]);
 

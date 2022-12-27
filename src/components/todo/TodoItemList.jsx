@@ -1,13 +1,13 @@
-import { useEffect, useState, memo } from "react";
-import { todoGet } from "../../apis/todo";
-import TodoItem from "./TodoItem";
+import { useEffect, useState, memo } from 'react';
+import { todoGet } from '../../apis/todo';
+import TodoItem from './TodoItem';
 
 function TodoItemList({ isDataChange, setIsdataChange }) {
   const [todoList, setTodoList] = useState([]);
 
   useEffect(() => {
     const items = async () => {
-      const token = localStorage.getItem("login");
+      const token = localStorage.getItem('login');
 
       const todoGetResult = await todoGet(token);
 
@@ -20,7 +20,7 @@ function TodoItemList({ isDataChange, setIsdataChange }) {
 
   return (
     <div>
-      {todoList.map((todo) => {
+      {todoList.map(todo => {
         return (
           <TodoItem
             key={todo.id}
