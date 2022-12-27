@@ -4,9 +4,9 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: ['airbnb', 'plugin:prettier/recommended'],
   parser: 'babel-parser',
+  extends: ['airbnb', 'plugin:prettier/recommended'],
   rules: {
-    'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
+    'react/prop-types': [0],
   },
 };

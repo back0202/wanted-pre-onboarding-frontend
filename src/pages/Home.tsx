@@ -1,22 +1,25 @@
-import { React, useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from '../components/home/Form';
 
+const signUp = '회원가입';
+const signIn = '로그인';
+
 function Home() {
-  const [tab, setTab] = useState('회원가입');
+  const [tab, setTab] = useState(signUp);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem('login');
+    const token = localStorage.getItem(signIn);
     if (token) {
       navigate('/todo');
     }
   }, [navigate]);
 
-  const handleTab = useCallback(() => {
-    setTab(prev => (prev === '로그인' ? '회원가입' : '로그인'));
-  }, []);
+  const handleTab = () => {
+    setTab(prev => (prev === signIn ? signUp : signIn));
+  };
 
   return (
     <div>
@@ -24,7 +27,7 @@ function Home() {
       <Form tab={tab} />
 
       <button onClick={handleTab} type="button">
-        {tab === '로그인' ? '회원가입' : '로그인'}
+        {tab === signIn ? signUp : signIn}
       </button>
     </div>
   );

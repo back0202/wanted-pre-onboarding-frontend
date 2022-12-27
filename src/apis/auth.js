@@ -15,7 +15,7 @@ const authApi = async (Body, auth) => {
     localStorage.clear();
     localStorage.setItem('login', token.data.access_token);
   } catch (e) {
-    auth === 'signin' ? alert('로그인 실패') : alert('회원가입 실패');
+    // auth === 'signin' ? alert('로그인 실패') : alert('회원가입 실패');
   }
 };
 

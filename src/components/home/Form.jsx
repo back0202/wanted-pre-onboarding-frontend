@@ -1,7 +1,7 @@
 import { React, memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { authApi } from '../../apis/auth';
+import authApi from '../../apis/auth';
 
 const SForm = styled.form`
   display: flex;
@@ -44,9 +44,9 @@ function Form({ tab }) {
   );
 
   const passwordHandler = useCallback(e => {
-    const password = e.target.value;
-    setPassword(password);
-    if (password.length < 8) {
+    const passwordInput = e.target.value;
+    setPassword(passwordInput);
+    if (passwordInput.length < 8) {
       setisPassword(false);
     } else {
       setisPassword(true);
@@ -55,12 +55,12 @@ function Form({ tab }) {
 
   return (
     <SForm onSubmit={handleSubmit}>
-      <label>Email</label>
+      <span>Email</span>
       <input type="email" value={email} onChange={emailHandler} />
       {email.length > 0 && !isEmail && (
         <span>이메일 형식이 틀렸습니다. 다시 확인해주세요.</span>
       )}
-      <label>Password</label>
+      <span>Password</span>
       <input type="password" value={password} onChange={passwordHandler} />
       {password.length > 0 && !isPassword && (
         <span>비밀번호는 8자리 이상입니다.</span>
