@@ -1,7 +1,7 @@
-import { memo, useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { authApi } from "../../apis/auth";
+import { React, memo, useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { authApi } from '../../apis/auth';
 
 const SForm = styled.form`
   display: flex;
@@ -9,14 +9,14 @@ const SForm = styled.form`
 `;
 
 function Form({ tab }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setisPassword] = useState(false);
 
   const navigate = useNavigate();
 
-  const emailHandler = useCallback((e) => {
+  const emailHandler = useCallback(e => {
     const emailRegex = /@/;
     setEmail(e.target.value);
     if (!emailRegex.test(e.target.value)) {
@@ -27,23 +27,23 @@ function Form({ tab }) {
   }, []);
 
   const handleSubmit = useCallback(
-    async (e) => {
+    async e => {
       e.preventDefault();
 
-      if (tab === "로그인") {
-        const Body = { email: email, password: password };
-        await authApi(Body, "signin");
+      if (tab === '로그인') {
+        const Body = { email, password };
+        await authApi(Body, 'signin');
       } else {
-        const Body = { email: email, password: password };
-        await authApi(Body, "signup");
+        const Body = { email, password };
+        await authApi(Body, 'signup');
       }
 
-      if (localStorage.getItem("login")) navigate("/todo");
+      if (localStorage.getItem('login')) navigate('/todo');
     },
-    [email, navigate, password, tab]
+    [email, navigate, password, tab],
   );
 
-  const passwordHandler = useCallback((e) => {
+  const passwordHandler = useCallback(e => {
     const password = e.target.value;
     setPassword(password);
     if (password.length < 8) {

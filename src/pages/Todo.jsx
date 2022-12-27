@@ -1,9 +1,9 @@
-import { useEffect, useState, memo } from "react";
-import { useNavigate } from "react-router-dom";
-import TodoInput from "../components/todo/TodoInput";
-import TodoItemList from "../components/todo/TodoItemList";
-import TodoTitle from "../components/todo/TodoTitle";
-import styled from "styled-components";
+import { React, useEffect, useState, memo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import TodoInput from '../components/todo/TodoInput';
+import TodoItemList from '../components/todo/TodoItemList';
+import TodoTitle from '../components/todo/TodoTitle';
 
 const SLayout = styled.div`
   display: flex;
@@ -16,9 +16,9 @@ function Todo() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("login");
+    const token = localStorage.getItem('login');
     if (!token) {
-      navigate("/");
+      navigate('/');
     }
   }, [navigate]);
 
